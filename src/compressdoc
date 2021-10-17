@@ -1,15 +1,36 @@
 #!/bin/bash
-# VERSION: 20080421.1623
+VERSION=20211017
+
+# prints the software version
+function version ()
+{
+  echo "compressdoc ${VERSION}" && \
+  cat << EOF
+    Copyright (C) 2021 saltedcoffii
+    Copyright (C) 2008 Beyond Linux from Scratch
+    Distributed under the European Union Public License version 1.2, or,
+    at your option, any later version.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+EOF
+}
+
 
 # Funny enough, this function prints some help.
 function help ()
 {
   if [ -n "$1" ]; then
-    echo "Unknown option : $1"
+    echo "Unknown option $1"
   fi
-  ( echo "Usage: $MY_NAME <comp_method> [options] [dirs]" && \
-  cat << EOT
-Where comp_method is one of :
+  ( echo "Usage: $MY_NAME <compress> [options] [dirs]" && \
+  cat << EOF
+Where compress is one of :
   --gzip, --gz, -z
   --bzip2, --bz2, -j
   --lzip, --lz, -l
@@ -55,12 +76,15 @@ And where options are :
   --dry-run, --fake, -f
   		Fakes it. Print the actual parameters compressdoc will use.
 
+  --help, -h    Prints a help message.
+  --version, -V Prints version and license information.
+
   dirs          A list of space-separated _absolute_ pathnames to the
                 man directories. When empty, and only then, use manpath
                 to parse ${MAN_CONF}/man_db.conf for all valid occurrences
                 of MANDATORY_MANPATH.
 
-EOT
+EOF
 ) | less
 }
 
@@ -128,7 +152,7 @@ FAKE=no
 MAN_CONF=/etc
 while [ -n "$1" ]; do
   case $1 in
-    --gzip|--gz|-g)
+    --gzip|--gz|-z)
       COMP_SUF=.gz
       COMP_METHOD=$1
       shift
@@ -202,6 +226,10 @@ while [ -n "$1" ]; do
       ;;
     --help|-h)
       help
+      exit 0
+      ;;
+    --version|-V)
+      version
       exit 0
       ;;
     /*)
@@ -480,7 +508,7 @@ for DIR in $MAN_DIR; do
             echo "Compressed $FILE" > $DEST_FD1
             ;;
           *)
-            echo "Uncompressed $FILE" > $DEST_FD1
+            echo "Decompressed $FILE" > $DEST_FD1
             ;;
         esac
 
