@@ -16,9 +16,9 @@ install: all
 	$(INSTALL) -Dm644 $(COMPRESSDOC.1) $(DESTDIR)$(MANDIR)/man1/compressdoc.1
 
 uninstall:
-	rm -r $(DESTDIR)$(BINDIR)/compressdoc
+	rm $(DESTDIR)$(BINDIR)/compressdoc
 
 clean:
-	rm -r $(COMPRESSDOC.1)
+	rm $(COMPRESSDOC.1)
 
 .PHONY: all clean install
