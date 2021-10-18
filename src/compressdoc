@@ -299,7 +299,7 @@ if [ "$FAKE" != "no" ]; then
   echo -n "Compression.......: "
   case $COMP_METHOD in
     --bzip2|--bz2|-b) echo -n "bzip2";;
-    --gzip|--gz|-g) echo -n "gzip";;
+    --gzip|--gz|-z) echo -n "gzip";;
     --lzip|--lz|-l) echo -n "lzip";;
     --lzma|--xz|-J) echo -n "xz";;
     --lzop) echo -n "lzop";;
