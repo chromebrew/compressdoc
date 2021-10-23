@@ -1,15 +1,15 @@
 #!/bin/bash
 VERSION=20211017
 
-# prints the software version
+# prints the software version and license information
 function version ()
 {
   echo "compressdoc ${VERSION}" && \
   cat << EOF
+    Copyright (C) 2008 Beyond Linux from Scratch Authors
     Copyright (C) 2021 saltedcoffii
-    Copyright (C) 2008 Beyond Linux from Scratch
-    Distributed under the European Union Public License version 1.2, or,
-    at your option, any later version.
+
+    Distributed under the MIT License.
 
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -74,9 +74,10 @@ And where options are :
                 and to print the name of the file being processed.
 
   --dry-run, --fake, -f
-  		Fakes it. Print the actual parameters compressdoc will use.
+  		          Fakes it. Print the actual parameters compressdoc will use.
 
-  --help, -h    Prints a help message.
+  --help, -h, -?
+                Prints a help message.
   --version, -V Prints version and license information.
 
   dirs          A list of space-separated _absolute_ pathnames to the
@@ -85,7 +86,7 @@ And where options are :
                 of MANDATORY_MANPATH.
 
 EOF
-) | less
+)
 }
 
 # This function checks that the man page is unique amongst bzip2'd,
@@ -224,7 +225,7 @@ while [ -n "$1" ]; do
       FAKE=yes
       shift
       ;;
-    --help|-h)
+    --help|-h|-?)
       help
       exit 0
       ;;
