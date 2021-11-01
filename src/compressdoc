@@ -160,7 +160,7 @@ while [ -n "$1" ]; do
       COMP_METHOD=$1
       shift
       ;;
-    --bzip2|--bz2|-b)
+    --bzip2|--bz2|-j)
       COMP_SUF=.bz2
       COMP_METHOD=$1
       shift
