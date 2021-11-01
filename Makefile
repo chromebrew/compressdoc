@@ -14,20 +14,23 @@ COMPRESSDOC.1 := doc/compressdoc.1
 VERSION = $(shell grep ^VERSION $(COMPRESSDOC) | cut -d '=' -f 2)
 
 all:
-	$(HELP2MAN) --name "compress documentation in a directory and update symlinks" \
+	@echo "  HELP2MAN	compressdoc.1"
+	@$(HELP2MAN) --name "compress documentation in a directory and update symlinks" \
 							--section 1 \
 							--no-info \
 							--version-string $(VERSION) \
 							$(COMPRESSDOC) -o $(COMPRESSDOC.1)
 
-install: all
-	$(INSTALL) -Dm755 $(COMPRESSDOC) $(DESTDIR)$(BINDIR)/compressdoc
-	$(INSTALL) -Dm644 $(COMPRESSDOC.1) $(DESTDIR)$(MANDIR)/man1/compressdoc.1
+install: doc/compressdoc.1
+	@echo "  INSTALL	compressdoc"
+	@$(INSTALL) -Dm755 $(COMPRESSDOC) $(DESTDIR)$(BINDIR)/compressdoc
+	@echo "  INSTALL	compressdoc.1"
+	@$(INSTALL) -Dm644 $(COMPRESSDOC.1) $(DESTDIR)$(MANDIR)/man1/compressdoc.1
 
 uninstall:
+	echo "  RM	compressdoc"
 	rm $(DESTDIR)$(BINDIR)/compressdoc
+	rm $(DESTDIR)$(MANDIR)/man1/compressdoc.1
 
 clean:
 	rm $(COMPRESSDOC.1)
-
-.PHONY: all clean install
