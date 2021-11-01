@@ -28,9 +28,11 @@ install: doc/compressdoc.1
 	@$(INSTALL) -Dm644 $(COMPRESSDOC.1) $(DESTDIR)$(MANDIR)/man1/compressdoc.1
 
 uninstall:
-	echo "  RM	compressdoc"
-	rm $(DESTDIR)$(BINDIR)/compressdoc
-	rm $(DESTDIR)$(MANDIR)/man1/compressdoc.1
+	@echo "  UNINSTALL	compressdoc"
+	@rm $(DESTDIR)$(BINDIR)/compressdoc
+	@echo "  UNINSTALL	compressdoc.1"
+	@rm $(DESTDIR)$(MANDIR)/man1/compressdoc.1
 
 clean:
-	rm $(COMPRESSDOC.1)
+	@echo "  CLEAN	compressdoc.1"
+	@rm $(COMPRESSDOC.1)
