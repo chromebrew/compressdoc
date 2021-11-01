@@ -1,23 +1,26 @@
-#!/bin/bash
-VERSION=20211017
+#!/usr/bin/env bash
+VERSION=20211031
+
+# Setting CDPATH in the environment may cause issues
+unset CDPATH
 
 # prints the software version and license information
 function version ()
 {
-  echo "compressdoc ${VERSION}" && \
   cat << EOF
-    Copyright (C) 2008 Beyond Linux from Scratch Authors
-    Copyright (C) 2021 saltedcoffii
+compressdoc ${VERSION}
+Copyright (C) 2008 Beyond Linux from Scratch Authors
+Copyright (C) 2021 saltedcoffii
 
-    Distributed under the MIT License.
+Distributed under the MIT License.
 
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 EOF
 }
 
@@ -70,11 +73,10 @@ And where options are :
                 Specify the location of man_db.conf. Defaults to /etc.
 
   --verbose, -v Verbose mode, print the name of the directory being
-                processed. Double the flag to turn it even more verbose,
-                and to print the name of the file being processed.
+                processed. Can be specified twice
 
   --dry-run, --fake, -f
-  		          Fakes it. Print the actual parameters compressdoc will use.
+                Fakes it. Print the actual parameters compressdoc will use.
 
   --help, -h, -?
                 Prints a help message.
