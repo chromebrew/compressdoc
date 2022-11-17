@@ -306,7 +306,7 @@ if [ "$FAKE" != "no" ]; then
     --lzip|--lz|-l) echo -n "lzip";;
     --lzma|--xz|-J) echo -n "xz";;
     --lzop) echo -n "lzop";;
-    --zstd) echo -n "zstd";;
+    --zstd) echo -n "zstd --rm";;
     --decompress|-d) echo -n "decompressing";;
     *) echo -n "unknown";;
   esac
