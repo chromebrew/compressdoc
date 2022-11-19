@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-VERSION=20211031
+VERSION=202211119
 
 # Setting CDPATH in the environment may cause issues
 unset CDPATH
