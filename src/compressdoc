@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-VERSION=20211031
+VERSION=20221119
 
 # Setting CDPATH in the environment may cause issues
 unset CDPATH
@@ -507,7 +507,7 @@ for DIR in $MAN_DIR; do
             echo "Compressed $FILE" > $DEST_FD1
             ;;
           *zst)
-            zstd ${COMP_LVL} "$FILE" && chmod 644 "${FILE}${COMP_SUF}"
+            zstd --rm ${COMP_LVL} "$FILE" && chmod 644 "${FILE}${COMP_SUF}"
             echo "Compressed $FILE" > $DEST_FD1
             ;;
           *)
